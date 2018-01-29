@@ -13,5 +13,6 @@ printf '%s\n' "Installing ZSH..." 1>&2
 sudo apt-get install zsh
 
 printf '%s\n' "Creating links..." 1>&2
-echo "source $ZSH_DIR/.zshrc" > $HOME/.zshrc
+#echo "source $ZSH_DIR/.zshrc" > $HOME/.zshrc
+ln -s $ZSH_DIR/.zshrc $HOME/.zshrc
 chsh -s $(which zsh)

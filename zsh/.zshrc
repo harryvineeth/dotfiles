@@ -32,8 +32,8 @@ antigen bundle autojump
 antigen bundle sudo
 antigen bundle safe-paste
 antigen bundle web-search
-
-antigen theme subnixr/minimal
+antigen theme robbyrussell
+#antigen theme subnixr/minimal
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop

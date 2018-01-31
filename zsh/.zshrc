@@ -32,6 +32,7 @@ antigen bundle autojump
 antigen bundle sudo
 antigen bundle safe-paste
 antigen bundle web-search
+
 antigen theme robbyrussell
 #antigen theme subnixr/minimal
 
@@ -56,3 +57,5 @@ antigen apply
 # setopt no_beep
 
 unalias _
+alias gst='git worktree prune && git worktree list | grep --color -E "$(git rev-parse --show-toplevel).*|$" && git branch && git status --short && echo $(git stash list -q)'
+alias gwd='git rev-parse --show-toplevel'

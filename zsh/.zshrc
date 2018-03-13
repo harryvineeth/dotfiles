@@ -31,7 +31,7 @@ antigen bundle debian
 antigen bundle autojump
 antigen bundle sudo
 antigen bundle safe-paste
-antigen bundle web-search
+antigen bundle tmux
 
 antigen theme robbyrussell
 #antigen theme subnixr/minimal
@@ -55,7 +55,16 @@ antigen apply
 # setopt correct
 # setopt hist_expire_dups_first
 # setopt no_beep
+setopt auto_menu
 
 unalias _
-alias gst='git worktree prune && git worktree list | grep --color -E "$(git rev-parse --show-toplevel).*|$" && git branch && git status --short && echo $(git stash list -q)'
+alias gw='git worktree'
+alias gwl='git worktree list'
+alias gwa='git worktree add'
+alias gwac='git worktree add --checkout'
+alias gwp='git worktree prune'
+
 alias gwd='git rev-parse --show-toplevel'
+alias gst='gwp ; gwl | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; echo $(git stash list -q)'
+alias gsui='git submodule update --init'
+alias gbD='git branch -D'

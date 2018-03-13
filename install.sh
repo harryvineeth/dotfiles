@@ -18,7 +18,10 @@ chmod +x ./*/install.sh
 # ZSH setup
 (cd zsh ; ./install.sh)
 
-# VSCode
+# Tmux setup
+(cd tmux ; ./install.sh)
+
+# VSCode setup
 (cd vscode ; ./install.sh)
 
 printf '\n%s\n\n' "Done setting up OS tools" 1>&2

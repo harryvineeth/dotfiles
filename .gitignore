@@ -1,2 +1,5 @@
 # Ignore compiled zshrc
 zsh/.zshrc.zwc
+
+# Ignore all .pub files downloaded as part of the installation process
+**/*.pub

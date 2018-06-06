@@ -10,7 +10,7 @@ rustup override set stable
 rustup update stable
 
 printf '%s\n' "Instaling Dependancy: Debian Tools..." 1>&2
-sudo apt-get install cmake libfreetype6-dev libfontconfig1-dev xclip -y
+sudo apt-get install cmake libfreetype6-dev libfontconfig1-dev xclip cargo -y
 
 printf '%s\n' "Installing Alacritty..." 1>&2
 git clone https://github.com/jwilm/alacritty.git $ALACRITTY_REPO_DIR
@@ -18,4 +18,5 @@ git clone https://github.com/jwilm/alacritty.git $ALACRITTY_REPO_DIR
 
 printf '%s\n' "Creating links..." 1>&2
 sudo cp $ALACRITTY_REPO_DIR/target/release/alacritty /usr/local/bin
-cp $ALACRITTY_REPO_DIR/Alacritty.desktop ~/.local/share/applications
+sudo desktop-file-install $ALACRITTY_REPO_DIR/alacritty.desktop
+sudo update-desktop-database

@@ -12,6 +12,10 @@ mkdir -p $SOFTWARE_DIR
 printf '%s\n' "Setting script permissions..." 1>&2
 chmod +x ./*/install.sh
 
+printf '%s\n' "Installing universal dependancies..." 1>&2
+sudo apt-get update
+sudo apt-get install curl python -y
+
 # Alacritty setup
 (cd alacritty ; ./install.sh)
 
@@ -23,6 +27,9 @@ chmod +x ./*/install.sh
 
 # VSCode setup
 (cd vscode ; ./install.sh)
+
+# Google Chrome setup
+(cd chrome ; ./install.sh)
 
 printf '\n%s\n\n' "Done setting up OS tools" 1>&2
 exit 0

@@ -65,6 +65,6 @@ alias gwac='git worktree add --checkout'
 alias gwp='git worktree prune'
 
 alias gwd='git rev-parse --show-toplevel'
-alias gst='gwp ; gwl | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; echo $(git stash list -q)'
+alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; echo $(git branch) ; git status --short ; echo $(git stash list -q)'
 alias gsui='git submodule update --init'
 alias gbD='git branch -D'

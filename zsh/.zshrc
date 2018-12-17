@@ -36,6 +36,7 @@ setopt auto_menu
 
 # disable git stash pager
 git config --global pager.stash false
+git config --global pager.branch false
 
 unalias _
 alias gw='git worktree'

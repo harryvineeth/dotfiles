@@ -3,10 +3,12 @@ source $HOME/Repos/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle common-aliases
+antigen bundle command-not-found
+antigen bundle cp
 antigen bundle git
 antigen bundle debian
 antigen bundle autojump
-antigen bundle sudo
+antigen bundle thefuck
 antigen bundle safe-paste
 antigen bundle tmux
 
@@ -15,15 +17,13 @@ antigen theme subnixr/minimal
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
 antigen bundle psprint/history-search-multi-word
-antigen bundle b4b4r07/enhancd
-antigen bundle RobSis/zsh-completion-generator
-antigen bundle marzocchi/zsh-notify
 antigen bundle lukechilds/zsh-nvm
+antigen bundle Seinh/git-prune
 antigen bundle willghatch/zsh-saneopt
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle djui/alias-tips
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zdharma/fast-syntax-highlighting
 
 antigen apply
 
@@ -33,9 +33,15 @@ setopt menu_complete
 # Remove '_' alias to 'sudo'
 unalias _
 
+# Remove 'g' alias to 'git'
+unalias g
+
 # Disable git stash pager
 git config --global pager.stash false
 git config --global pager.branch false
+
+# Gprune plugin alias
+alias gpr='gprune'
 
 # Git worktree aliases
 alias gw='git worktree'
@@ -45,4 +51,5 @@ alias gwac='git worktree add --checkout'
 alias gwp='git worktree prune'
 
 # Custom git status alias
+alias gwd='git rev-parse --show-toplevel'
 alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; git stash list'

@@ -9,11 +9,12 @@ printf '%s\n' "Installing Dependancy: Antigen..." 1>&2
 mkdir -p $ANTIGEN_DIR
 curl -L git.io/antigen > $ANTIGEN_DIR/antigen.zsh
 
-printf '%s\n' "Installing Dependancy: fzy..." 1>&2
+printf '%s\n' "Installing Dependancy: thefuck..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
-    sudo apt-get install fzy -y
+    sudo apt-get install python3-dev python3-pip
+    sudo pip3 install thefuck
 elif [ "$MACHINE" = "MacOS" ]; then
-    brew install fzy
+    brew install thefuck
 fi
 
 printf '%s\n' "Installing ZSH..." 1>&2

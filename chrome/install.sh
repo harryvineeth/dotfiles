@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf '\n%s\n\n' "--------Tmux Installation--------" 1>&2
+printf '\n%s\n\n' "--------Google Chrome Installation--------" 1>&2
 
 export CHROME_DIR=$(pwd)
 

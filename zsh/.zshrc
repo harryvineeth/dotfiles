@@ -49,33 +49,3 @@ alias gwd='git rev-parse --show-toplevel'
 alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; git stash list'
 alias gsui='git submodule update --init'
 alias gbD='git branch -D'
-
-# Makes me sign in with SSH key if necessary; tries to preserve sessions if possible.
-# NOTE THAT this agent feature must be disabled to have security. Any application can ask the ssh-agent for stuff.
-	# Actually, this may not be true. :/
-# For a guide on how to use SSH with GitHub, try https://help.github.com/articles/generating-ssh-keys/
-# If something messes up, ssh-reset to remove the starter file and restart the shell.
-# "ssh-agent" returns a bash script that sets global variables, so I store it into a tmp file auto-erased at each reboot.
-sshtmp=/tmp/sshagentthing.sh
-if [ -f ~/.ssh/id_rsa ] || [ -f ~/.ssh/id_ecdsa ]; then # Only if we actually have some SSH stuff to do
-	ssh_start () { ssh-agent > $sshtmp; . $sshtmp > /dev/null; ssh-add &> /dev/null; echo PID $SSH_AGENT_PID; } # -t 1200 may be added to ssh-agent.
-  alias ssh-start=ssh_start
-	ssh_end () { rm $sshtmp; kill $SSH_AGENT_PID; }
-  alias ssh-end=ssh_end
-	ssh_reset () { echo -n "Resetting SSH agent... "; ssh_end; ssh_start; }
-  alias ssh-reset=ssh_reset
-	if [ ! -f $sshtmp ]; then # Only do it if daemon doesn't already exist
-		echo
-		echo "New SSH agent"
-		ssh_start
-	else # Otherwise, everything is preserved until the ssh-agent process is stopped.
-		# echo "Reauthenticating SSH agent..."
-		. $sshtmp > /dev/null
-		if ! ps -e | grep $SSH_AGENT_PID > /dev/null; then
-			echo -n "No agent with PID $SSH_AGENT_PID is running. "
-			ssh_reset
-		fi
-	fi
-else
-	echo "SSH is not currently set up. You might want to do that."
-fi

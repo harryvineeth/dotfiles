@@ -1,6 +1,6 @@
-printf '\n%s\n\n' "--------VSCode Installation--------" 1>&2
+printf '\n\e[34;1m%s\e[0m\n\n' "--------VSCode Installation--------" 1>&2
 
-printf '%s\n' "Installing Visual Studio Code..." 1>&2
+printf '\e[34m%s\e[0m\n' "Installing Visual Studio Code..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
     sudo install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/

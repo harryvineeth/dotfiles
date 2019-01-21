@@ -10,7 +10,6 @@ antigen bundle sudo
 antigen bundle safe-paste
 antigen bundle tmux
 
-# antigen theme robbyrussell
 antigen theme subnixr/minimal
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
@@ -28,24 +27,22 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
-# setopt auto_cd
-# setopt correct
-# setopt hist_expire_dups_first
-# setopt no_beep
-setopt auto_menu
+# Auto-insert first completion on ambiguity
+setopt menu_complete
 
-# disable git stash pager
+# Remove '_' alias to 'sudo'
+unalias _
+
+# Disable git stash pager
 git config --global pager.stash false
 git config --global pager.branch false
 
-unalias _
+# Git worktree aliases
 alias gw='git worktree'
 alias gwl='git worktree list'
 alias gwa='git worktree add'
 alias gwac='git worktree add --checkout'
 alias gwp='git worktree prune'
 
-alias gwd='git rev-parse --show-toplevel'
+# Custom git status alias
 alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; git stash list'
-alias gsui='git submodule update --init'
-alias gbD='git branch -D'

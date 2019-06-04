@@ -11,7 +11,6 @@ curl -L git.io/antigen > $ANTIGEN_DIR/antigen.zsh
 
 printf '\e[34m%s\e[0m\n' "Installing Dependancy: thefuck..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
-    sudo apt-get install python3-dev python3-pip
     sudo pip3 install thefuck
 elif [ "$MACHINE" = "MacOS" ]; then
     brew install thefuck

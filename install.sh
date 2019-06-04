@@ -10,7 +10,7 @@ unameOut="$(uname -s)"
 case "$unameOut" in
     Linux*)     machine=Linux;;
     Darwin*)    machine=MacOS;;
-    *)          machine="UNKNOWN:$unameOut"
+    *)          machine="UNKNOWN:$unameOut";;
 esac
 
 # If this is a Linux system, check for Ubuntu vs unknown
@@ -18,7 +18,17 @@ if [ "$machine" = "Linux" ]; then
     unameOut="$(uname -v)"
     case "$unameOut" in
         *Ubuntu*)    machine=Ubuntu;;
-        *)           machine="UNKNOWN:$unameOut"
+	    *Microsoft*) machine=Microsoft;;
+        *)           machine="UNKNOWN:$unameOut";;
+    esac
+fi
+
+# If this is a WSL Distro, ask user to override using Ubuntu config
+if [ "$machine" = "Microsoft" ]; then
+    read -r -p "Assume Ubuntu installation for WSL? [Y/n] " response
+    case "$response" in
+        [yY][eE][sS]|[yY])  machine=Ubuntu;;
+        *)                  ;;
     esac
 fi
 export MACHINE=$machine
@@ -28,6 +38,13 @@ if [ "$MACHINE" = "Ubuntu" ] || [ "$MACHINE" = "MacOS" ]; then
 else
     printf '\e[31;1m%s\e[0m\n' "Unsupported environment: '$MACHINE'" 1>&2
     exit 1
+fi
+
+# Get UI type from CLI args
+export UI_TYPE=default
+if [ "${1-}" = "--headless" ]; then
+     printf '\e[34;1m%s\e[0m\n' "Only installing heeadless components..." 1>&2
+     export UI_TYPE="headless"
 fi
 
 export REPOS_DIR=$HOME/Repos
@@ -40,14 +57,11 @@ chmod +x ./*/install.sh
 printf '\e[34m%s\e[0m\n' "Installing universal dependancies..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     sudo apt-get update
-    sudo apt-get install curl python -y
+    sudo apt-get install curl python3 python3-pip -y
 elif [ "$MACHINE" = "MacOS" ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     brew install curl python
 fi
-
-# Alacritty setup
-(cd alacritty ; ./install.sh)
 
 # ZSH setup
 (cd zsh ; ./install.sh)
@@ -63,4 +77,3 @@ fi
 
 printf '\n\e[34;1m%s\e[0m\n\n' "Done setting up OS tools" 1>&2
 exit 0
-

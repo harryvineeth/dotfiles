@@ -7,18 +7,16 @@ antigen bundle command-not-found
 antigen bundle cp
 antigen bundle git
 antigen bundle debian
-antigen bundle autojump
 antigen bundle thefuck
 antigen bundle safe-paste
 antigen bundle tmux
 
-antigen theme subnixr/minimal
+antigen theme eendroroy/alien-minimal alien-minimal
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
 antigen bundle psprint/history-search-multi-word
 antigen bundle lukechilds/zsh-nvm
-antigen bundle Seinh/git-prune
 antigen bundle willghatch/zsh-saneopt
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -26,6 +24,9 @@ antigen bundle djui/alias-tips
 antigen bundle zdharma/fast-syntax-highlighting
 
 antigen apply
+
+# Show hostname for in theme
+export AM_SSH_SYM=$(hostname)
 
 # Auto-insert first completion on ambiguity
 setopt menu_complete
@@ -39,9 +40,6 @@ unalias g
 # Disable git stash pager
 git config --global pager.stash false
 git config --global pager.branch false
-
-# Gprune plugin alias
-alias gpr='gprune'
 
 # Git worktree aliases
 alias gw='git worktree'

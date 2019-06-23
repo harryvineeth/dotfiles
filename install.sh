@@ -62,6 +62,9 @@ elif [ "$MACHINE" = "MacOS" ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     brew install curl python
 fi
+git config --global user.name "Nelly Whads"
+git config --global user.email "nellywhads@gmail.com"
+
 
 # ZSH setup
 (cd zsh ; ./install.sh)

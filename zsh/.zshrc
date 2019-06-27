@@ -28,9 +28,6 @@ antigen apply
 # Show hostname for in theme
 export AM_SSH_SYM=$(hostname)
 
-# Auto-insert first completion on ambiguity
-setopt menu_complete
-
 # Remove '_' alias to 'sudo'
 unalias _
 

@@ -4,6 +4,7 @@ antigen use oh-my-zsh
 
 antigen bundle common-aliases
 antigen bundle command-not-found
+antigen bundle per-directory-history
 antigen bundle cp
 antigen bundle git
 antigen bundle debian
@@ -15,7 +16,7 @@ antigen theme eendroroy/alien-minimal alien-minimal
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
-antigen bundle psprint/history-search-multi-word
+antigen bundle zdharma/history-search-multi-word
 antigen bundle lukechilds/zsh-nvm
 antigen bundle willghatch/zsh-saneopt
 antigen bundle zsh-users/zsh-autosuggestions

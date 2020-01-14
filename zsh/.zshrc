@@ -48,3 +48,6 @@ alias gwp='git worktree prune'
 # Custom git status alias
 alias gwd='git rev-parse --show-toplevel'
 alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; git branch ; git status --short ; git stash list'
+
+# VSCode Insiders Alias
+alias icode='code-insiders'

@@ -8,11 +8,11 @@ My dotfiles for a clean OS rampup.
 
 ## Usage
 
-`./install.sh`
+`sudo ./install.sh`
 
 ### Headless mode
 
-`./install.sh --headless`
+`sudo ./install.sh --headless`
 
 This installs only headless tools/applications and omits things such as Google Chrome and VSCode.
 

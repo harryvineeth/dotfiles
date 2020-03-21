@@ -18,19 +18,21 @@ if [ "$machine" = "Linux" ]; then
     unameOut="$(uname -v)"
     case "$unameOut" in
         *Ubuntu*)    machine=Ubuntu;;
-	    *Microsoft*) machine=Microsoft;;
         *)           machine="UNKNOWN:$unameOut";;
     esac
 fi
 
-# If this is a WSL Distro, ask user to override using Ubuntu config
-if [ "$machine" = "Microsoft" ]; then
-    read -r -p "Assume Ubuntu installation for WSL? [Y/n] " response
+# If this is an unknown distro, ask user to override using Ubuntu or MacOS config
+if [ "$machine" = "UNKNOWN:$unameOut" ]; then
+    read -r -p "Unknown installation ($machine); Assume Ubuntu/MacOS? [U/M] " response
     case "$response" in
-        [yY][eE][sS]|[yY])  machine=Ubuntu;;
+        [uU])  machine=Ubuntu;;
+        [mM])  machine=MacOS;;
         *)                  ;;
     esac
 fi
+
+# If nothing matched, ask user to optionally override
 export MACHINE=$machine
 
 if [ "$MACHINE" = "Ubuntu" ] || [ "$MACHINE" = "MacOS" ]; then

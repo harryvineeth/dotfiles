@@ -17,3 +17,5 @@ My dotfiles for a clean OS rampup.
 This installs only headless tools/applications and omits things such as Google Chrome and VSCode.
 
 ### TODO
+
+- Update for Ubuntu >= 19.10 `$HOME` is `/root` for all `sudo` calls without explicitly using `--preserve-env=HOME`

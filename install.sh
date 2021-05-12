@@ -24,10 +24,11 @@ fi
 
 # If this is an unknown distro, ask user to override using Ubuntu or MacOS config
 if [ "$machine" = "UNKNOWN:$unameOut" ]; then
-    read -r -p "Unknown installation ($machine); Assume Ubuntu/MacOS? [U/M] " response
+    read -r -p "Unknown installation ($machine); Assume [U]buntu [M]acOS or [A]rch? " response
     case "$response" in
         [uU])  machine=Ubuntu;;
         [mM])  machine=MacOS;;
+        [aA])  machine=Arch;;
         *)                  ;;
     esac
 fi
@@ -35,7 +36,7 @@ fi
 # If nothing matched, ask user to optionally override
 export MACHINE=$machine
 
-if [ "$MACHINE" = "Ubuntu" ] || [ "$MACHINE" = "MacOS" ]; then
+if [ "$MACHINE" = "Ubuntu" ] || [ "$MACHINE" = "MacOS" ] || [ "$MACHINE" = "Arch" ]; then
     printf '\e[34m%s\e[0m\n' "Installing on $MACHINE" 1>&2
 else
     printf '\e[31;1m%s\e[0m\n' "Unsupported environment: '$MACHINE'" 1>&2
@@ -59,10 +60,13 @@ chmod +x ./*/install.sh
 printf '\e[34m%s\e[0m\n' "Installing universal dependancies..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     apt-get update
-    apt-get install curl python3 python3-pip vim -y
+    apt-get install curl python python-pip -y
 elif [ "$MACHINE" = "MacOS" ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     brew install curl python
+elif [ "$MACHINE" = "Arch" ]; then
+    pacman -Sy --noconfirm
+    pacman -S python curl python-pip --noconfirm
 fi
 git config --global user.name "Nelly Whads"
 git config --global user.email "nellywhads@gmail.com"

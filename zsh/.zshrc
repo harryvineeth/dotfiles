@@ -51,3 +51,9 @@ alias gst='gw prune ; gw list | grep --color -E "$(gwd).*|$" ; gb ; git status -
 
 # VSCode Insiders Alias
 alias icode='code-insiders'
+
+# Add python packages to path
+PATH=$PATH:/home/$USER/.local/bin
+
+# Add fuck alias
+eval $(thefuck --alias)

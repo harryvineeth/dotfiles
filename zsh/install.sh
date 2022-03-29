@@ -30,4 +30,6 @@ ln -sfn $ZSH_DIR/.zshrc $HOME/.zshrc
 if [ "$MACHINE" = "MacOS" ]; then
     echo "$(which zsh)" | tee -a /etc/shells > /dev/null
 fi
-chsh -s $(which zsh) $USER
+
+printf '\e[34m%s\e[0m\n' "Updating shell..." 1>&2
+chsh -s $(which zsh) $SUDO_USER

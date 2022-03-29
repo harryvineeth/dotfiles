@@ -5,6 +5,20 @@ set -e
 
 DOTFILE_REPO_ROOT='https://github.com/NellyWhadsDev/dotfiles'
 
+# Sudo check
+if [ "$USER" != "root" ]; then
+    printf '\e[31;1m%s\e[0m\n' "This script must be run as root" 1>&2
+    exit 1
+fi
+
+# Env check
+printf '\e[34m%s\e[0m\n' "Installing for user $SUDO_USER with home directory $HOME" 1>&2
+read -r -p "Is this correct? " response
+case "$response" in
+    [yY])       ;;
+    *)    exit 1;;
+esac
+
 # Get system type
 unameOut="$(uname -s)"
 case "$unameOut" in

@@ -55,3 +55,5 @@ alias icode='code-insiders'
 # Add python packages to path
 PATH=$PATH:/home/$USER/.local/bin
 
+# Add fuck alias
+eval $(thefuck --alias)

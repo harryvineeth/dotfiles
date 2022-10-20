@@ -23,4 +23,4 @@ This installs only headless tools/applications and omits things such as Google C
 
 ## TODO
 
-- Fix ownership of files created by the script on Ubuntu 20.*
+- Fix ownership of files created by the script on Ubuntu 20.* (see tmp.sh for ideas)

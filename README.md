@@ -20,3 +20,7 @@ To preserve the user's HOME environment variable use
 `sudo ./install.sh --headless`
 
 This installs only headless tools/applications and omits things such as Google Chrome and VSCode.
+
+## TODO
+
+- Fix ownership of files created by the script on Ubuntu 20.*

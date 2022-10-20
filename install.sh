@@ -74,7 +74,7 @@ chmod +x ./*/install.sh
 printf '\e[34m%s\e[0m\n' "Installing universal dependancies..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     apt-get update
-    apt-get install curl python python-pip -y
+    apt-get install curl python3 python3-pip -y
 elif [ "$MACHINE" = "MacOS" ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
     brew install curl python
@@ -94,9 +94,6 @@ git config --global user.email "nellywhads@gmail.com"
 
 # VSCode setup
 (cd vscode ; ./install.sh)
-
-# Google Chrome setup
-(cd chrome ; ./install.sh)
 
 printf '\n\e[34;1m%s\e[0m\n\n' "Done setting up OS tools" 1>&2
 exit 0

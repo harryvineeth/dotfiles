@@ -46,7 +46,7 @@ alias gst='gw prune ; gw list | grep --color -E "$(gwd).*|$" ; gb ; git status -
 # VSCode Insiders Alias
 alias icode='code-insiders'
 
-# Add python packages to path
+# Add python/other packages/scripts/tools to path
 PATH=$PATH:/home/$USER/.local/bin
 
 # Use python3 by default, only really nevessary on older OS versions

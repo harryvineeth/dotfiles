@@ -26,7 +26,7 @@ antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen apply
 
 # Show hostname for in theme
-export AM_SSH_SYM=$(hostname)
+export AM_SSH_SYM=$(hostname -s)
 
 # Disable git stash pager
 git config --global pager.stash false

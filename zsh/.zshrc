@@ -25,6 +25,9 @@ antigen bundle zdharma-continuum/fast-syntax-highlighting
 
 antigen apply
 
+# Source bash profile if it exists
+[[ -f ~/.bash_profile ]] && source ~/.bash_profile
+
 # Show hostname for in theme
 export AM_SSH_SYM=$(hostname -s)
 export AM_DOCKER_SYM=$(hostname -s) # Docker stores the container ID as hostname

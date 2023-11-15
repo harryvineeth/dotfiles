@@ -17,6 +17,7 @@ antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
 antigen bundle zdharma-continuum/history-search-multi-word@main
 antigen bundle lukechilds/zsh-nvm
+antigen bundle mattberther/zsh-pyenv
 antigen bundle willghatch/zsh-saneopt
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions

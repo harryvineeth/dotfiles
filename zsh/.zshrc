@@ -33,10 +33,6 @@ antigen apply
 export AM_SSH_SYM=$(hostname -s)
 export AM_DOCKER_SYM=$(hostname -s) # Docker stores the container ID as hostname
 
-# Disable git stash pager
-git config --global pager.stash false
-git config --global pager.branch false
-
 # Git worktree aliases
 alias gw='git worktree'
 alias gwl='git worktree list'
@@ -46,7 +42,7 @@ alias gwp='git worktree prune'
 
 # Custom git status alias
 alias gwd='git rev-parse --show-toplevel'
-alias gst='gw prune ; gw list | grep --color -E "$(gwd).*|$" ; gb ; git status --short ; gstl'
+alias gst='git worktree prune ; git worktree list | grep --color -E "$(gwd).*|$" ; git --no-pager branch ; git status --short ; git --no-pager stash list'
 
 # VSCode Insiders Alias
 alias icode='code-insiders'

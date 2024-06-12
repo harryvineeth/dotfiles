@@ -56,4 +56,3 @@ alias python=python3
 
 # Add fuck alias
 eval $(thefuck --alias)
-export PYTORC_AWS_PROFILE=pytorc-dev

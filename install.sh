@@ -84,7 +84,7 @@ elif [ "$MACHINE" = "Arch" ]; then
 fi
 
 printf '\e[34m%s\e[0m\n' "Installing Dependancy: Python 3.x ..." 1>&2
-if ! command -v python &>/dev/null; then
+if ! python --version &>/dev/null; then
     curl https://pyenv.run | bash
     eval "$(pyenv init -)"
     pyenv install 3

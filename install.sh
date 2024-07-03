@@ -100,9 +100,11 @@ fi
 (cd vscode ; ./install.sh)
 
 # User setup
-printf '\e[34m%s\e[0m\n' "Setting global git user..." 1>&2
-git config --global user.name "Nelly Whads"
-git config --global user.email "nellywhads@gmail.com"
+if [ ! -f $HOME/.gitconfig ]; then
+    printf '\e[34m%s\e[0m\n' "Setting global git user..." 1>&2
+    git config --global user.name "Nelly Whads"
+    git config --global user.email "nellywhads@gmail.com"
+fi
 
 printf '\n\e[34;1m%s\e[0m\n\n' "Done setting up OS tools" 1>&2
 exit 0

@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
 # For one time dump from bash to zsh:
 # $ cat ~/.bash_history | python bash-to-zsh-hist.py >> ~/.zsh_history
 

@@ -7,8 +7,8 @@ DOTFILE_REPO_ROOT='https://github.com/NellyWhadsDev/dotfiles'
 
 # Sudo check
 if [ "$USER" != "root" ]; then
-    printf '\e[31;1m%s\e[0m\n' "This script must be run as root" 1>&2
-    exit 1
+    printf '\e[31;1m%s\e[0m\n' "Warning: This script is expected to run as root" 1>&2
+    SUDO_USER=$USER
 fi
 
 # Env check
@@ -74,17 +74,21 @@ chmod +x ./*/install.sh
 printf '\e[34m%s\e[0m\n' "Installing universal dependancies..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     apt-get update
-    apt-get install curl python3 python3-pip -y
+    apt-get install curl git -y
 elif [ "$MACHINE" = "MacOS" ]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
-    brew install curl python
+    brew install curl git
 elif [ "$MACHINE" = "Arch" ]; then
     pacman -Sy --noconfirm
-    pacman -S python curl python-pip --noconfirm
+    pacman -S curl git --noconfirm
 fi
-git config --global user.name "Nelly Whads"
-git config --global user.email "nellywhads@gmail.com"
 
+printf '\e[34m%s\e[0m\n' "Installing Dependancy: Python 3.x ..." 1>&2
+if ! command -v python &>/dev/null; then
+    curl https://pyenv.run | bash
+    eval "$(pyenv init -)"
+    pyenv install 3
+fi
 
 # ZSH setup
 (cd zsh ; ./install.sh)
@@ -94,6 +98,11 @@ git config --global user.email "nellywhads@gmail.com"
 
 # VSCode setup
 (cd vscode ; ./install.sh)
+
+# User setup
+printf '\e[34m%s\e[0m\n' "Setting global git user..." 1>&2
+git config --global user.name "Nelly Whads"
+git config --global user.email "nellywhads@gmail.com"
 
 printf '\n\e[34;1m%s\e[0m\n\n' "Done setting up OS tools" 1>&2
 exit 0

@@ -51,12 +51,15 @@ alias gst='gw prune ; gw list | grep --color -E "$(gwd).*|$" ; gb ; git status -
 # VSCode Insiders Alias
 alias icode='code-insiders'
 
-# Add python/other packages/scripts/tools to path
-PATH=$PATH:/home/$USER/.local/bin
+# Add user packages/scripts/tools to path
+PATH=$PATH:"$HOME/.local/bin"
 
-# Use python3 by default, only really nevessary on older OS versions
-alias pip=pip3
-alias python=python3
+# Add pyenv to path
+PYENV_ROOT="$HOME/.pyenv"
+if [[ -d $PYENV_ROOT/bin ]]; then
+    PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
 
 # Add fuck alias
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"

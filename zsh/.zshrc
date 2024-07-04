@@ -11,7 +11,7 @@ antigen bundle thefuck
 antigen bundle safe-paste
 antigen bundle tmux
 
-antigen theme nellywhadsdev/alien-minimal alien-minimal
+antigen theme nellywhads/alien-minimal alien-minimal
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop

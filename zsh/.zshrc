@@ -51,7 +51,7 @@ alias icode='code-insiders'
 PATH=$PATH:"$HOME/.local/bin"
 
 # Add pyenv to path
-PYENV_ROOT="$HOME/.pyenv"
+PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
 if [[ -d $PYENV_ROOT/bin ]]; then
     PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
@@ -59,3 +59,6 @@ fi
 
 # Add fuck alias
 eval "$(thefuck --alias)"
+
+# TORC_ML
+export PYTORC_AWS_PROFILE=pytorc-dev

@@ -3,3 +3,6 @@ zsh/.zshrc.zwc
 
 # Ignore all .pub files downloaded as part of the installation process
 **/*.pub
+
+# MacOS
+.DS_Store

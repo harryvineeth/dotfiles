@@ -16,6 +16,15 @@ elif [ "$MACHINE" = "MacOS" ]; then
     brew install thefuck
 fi
 
+printf '\e[34m%s\e[0m\n' "Installing direnv..." 1>&2
+if [ "$MACHINE" = "Ubuntu" ]; then
+    apt-get install direnv -y
+elif [ "$MACHINE" = "MacOS" ]; then
+    brew install direnv
+elif [ "$MACHINE" = "Arch" ]; then
+    pacman -S direnv --noconfirm
+fi
+
 printf '\e[34m%s\e[0m\n' "Installing ZSH..." 1>&2
 if [ "$MACHINE" = "Ubuntu" ]; then
     apt-get install zsh -y

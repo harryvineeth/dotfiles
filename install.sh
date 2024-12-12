@@ -86,6 +86,8 @@ fi
 printf '\e[34m%s\e[0m\n' "Installing Dependancy: Python 3.x ..." 1>&2
 if ! python --version &>/dev/null; then
     curl https://pyenv.run | bash
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
     pyenv install 3
 fi

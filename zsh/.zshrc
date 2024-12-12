@@ -10,6 +10,8 @@ antigen bundle debian
 antigen bundle thefuck
 antigen bundle safe-paste
 antigen bundle tmux
+antigen bundle direnv
+antigen bundle pyenv
 
 antigen theme nellywhads/alien-minimal alien-minimal
 

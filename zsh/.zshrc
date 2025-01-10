@@ -63,4 +63,4 @@ fi
 eval "$(thefuck --alias)"
 
 # TORC_ML
-export PYTORC_AWS_PROFILE=pytorc-dev
+export TORC_ML_AWS_PROFILE=torc-ml-dev

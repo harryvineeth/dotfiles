@@ -23,6 +23,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle djui/alias-tips
 antigen bundle zdharma-continuum/fast-syntax-highlighting
+antigen bundle z-shell/zsh-lsd --branch=main
 
 antigen apply
 
@@ -39,6 +40,7 @@ alias gwl='git worktree list'
 alias gwa='git worktree add'
 alias gwac='git worktree add --checkout'
 alias gwp='git worktree prune'
+alias glogb='git log --oneline --decorate --graph --branches'
 
 # Custom git status alias
 alias gwd='git rev-parse --show-toplevel'
@@ -52,6 +54,11 @@ PATH=$PATH:"$HOME/.local/bin"
 
 # Add fuck alias
 eval "$(thefuck --alias)"
+
+# Workaround for ghostty
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
 
 # TORC_ML
 export TORC_ML_AWS_PROFILE=torc-ml-dev

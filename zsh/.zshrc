@@ -11,7 +11,6 @@ antigen bundle thefuck
 antigen bundle safe-paste
 antigen bundle tmux
 antigen bundle direnv
-antigen bundle pyenv
 
 antigen theme nellywhads/alien-minimal alien-minimal
 
@@ -19,12 +18,12 @@ antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
 antigen bundle zdharma-continuum/history-search-multi-word@main
 antigen bundle lukechilds/zsh-nvm
-antigen bundle mattberther/zsh-pyenv
 antigen bundle willghatch/zsh-saneopt
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle djui/alias-tips
 antigen bundle zdharma-continuum/fast-syntax-highlighting
+antigen bundle z-shell/zsh-lsd --branch=main
 
 antigen apply
 
@@ -41,6 +40,7 @@ alias gwl='git worktree list'
 alias gwa='git worktree add'
 alias gwac='git worktree add --checkout'
 alias gwp='git worktree prune'
+alias glogb='git log --oneline --decorate --graph --branches'
 
 # Custom git status alias
 alias gwd='git rev-parse --show-toplevel'
@@ -52,15 +52,13 @@ alias icode='code-insiders'
 # Add user packages/scripts/tools to path
 PATH=$PATH:"$HOME/.local/bin"
 
-# Add pyenv to path
-PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
-if [[ -d $PYENV_ROOT/bin ]]; then
-    PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-fi
-
 # Add fuck alias
 eval "$(thefuck --alias)"
+
+# Workaround for ghostty
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
 
 # TORC_ML
 export TORC_ML_AWS_PROFILE=torc-ml-dev

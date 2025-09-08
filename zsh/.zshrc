@@ -12,7 +12,7 @@ antigen bundle safe-paste
 antigen bundle tmux
 antigen bundle direnv
 
-antigen theme nellywhads/alien-minimal alien-minimal
+antigen bundle romkatv/powerlevel10k
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
@@ -29,6 +29,8 @@ antigen apply
 
 # Source bash profile if it exists
 [[ -f ~/.bash_profile ]] && source ~/.bash_profile
+
+[[ -f "$HOME/.p10k.zsh" ]] && source "$HOME/.p10k.zsh"
 
 # Show hostname for in theme
 export AM_SSH_SYM=$(hostname -s)

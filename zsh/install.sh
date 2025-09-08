@@ -36,6 +36,8 @@ fi
 
 printf '\e[34m%s\e[0m\n' "Creating links..." 1>&2
 ln -sfn $ZSH_DIR/.zshrc $HOME/.zshrc
+ln -sfn $ZSH_DIR/.p10k.zsh $HOME/.p10k.zsh
+
 if [ "$MACHINE" = "MacOS" ]; then
     echo "$(which zsh)" | tee -a /etc/shells > /dev/null
 fi

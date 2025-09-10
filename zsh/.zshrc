@@ -1,7 +1,3 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 source $HOME/Repos/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -16,7 +12,7 @@ antigen bundle safe-paste
 antigen bundle tmux
 antigen bundle direnv
 
-antigen bundle romkatv/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle Valiev/almostontop
@@ -30,6 +26,8 @@ antigen bundle zdharma-continuum/fast-syntax-highlighting
 antigen bundle z-shell/zsh-lsd --branch=main
 
 antigen apply
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # Source bash profile if it exists
 [[ -f ~/.bash_profile ]] && source ~/.bash_profile

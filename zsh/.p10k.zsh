@@ -277,6 +277,7 @@
   typeset -g POWERLEVEL9K_DIR_MAX_LENGTH=80
   typeset -g POWERLEVEL9K_DIR_MAX_DEPTH=1
   typeset -g POWERLEVEL9K_SHORTEN_DIR_SHOW_LAST=always
+  typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_last
   # When `dir` segment is on the last prompt line, try to shorten it enough to leave at least this
   # many columns for typing commands.
   typeset -g POWERLEVEL9K_DIR_MIN_COMMAND_COLUMNS=40
